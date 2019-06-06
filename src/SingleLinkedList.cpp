@@ -60,6 +60,33 @@ int SingleLinkedList::pop_front()
     throw "LinkedList is empty";
   }
   int data = this->head->data;
+  const Node *head = this->head;
   this->head = this->head->next;
+  delete head;
   return data;
+}
+
+int SingleLinkedList::pop_back()
+{
+  if (this->head == nullptr)
+  {
+    throw "LinkedList is empty";
+  }
+  if (this->head->next == nullptr)
+  {
+    const auto data = this->head->data;
+    delete this->head;
+    this->head = nullptr;
+    return data;
+  }
+  Node *temp = this->head;
+  while (temp->next->next != nullptr)
+  {
+    temp = temp->next;
+  }
+  auto node = temp->next;
+  const auto data = node->data;
+  delete node;
+  temp->next = nullptr;
+  return node->data;
 }

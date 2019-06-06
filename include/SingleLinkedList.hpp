@@ -11,6 +11,7 @@ public:
   void push_back(int data);
   int peek_back();
   int pop_front();
+  int pop_back();
 
 private:
   class Node
