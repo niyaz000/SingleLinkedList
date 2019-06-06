@@ -10,6 +10,7 @@ public:
   int peek_front();
   void push_back(int data);
   int peek_back();
+  int pop_front();
 
 private:
   class Node

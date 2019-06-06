@@ -52,3 +52,14 @@ SingleLinkedList::Node *SingleLinkedList::getTailNode()
   }
   return temp;
 }
+
+int SingleLinkedList::pop_front()
+{
+  if (this->head == nullptr)
+  {
+    throw "LinkedList is empty";
+  }
+  int data = this->head->data;
+  this->head = this->head->next;
+  return data;
+}
