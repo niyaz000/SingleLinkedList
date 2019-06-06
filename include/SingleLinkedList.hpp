@@ -8,6 +8,8 @@ public:
   SingleLinkedList();
   void push_front(int data);
   int peek_front();
+  void push_back(int data);
+  int peek_back();
 
 private:
   class Node
@@ -24,6 +26,7 @@ private:
     }
   };
   Node *head;
+  Node *getTailNode();
 };
 
 #endif
