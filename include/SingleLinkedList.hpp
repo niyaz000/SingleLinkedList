@@ -3,15 +3,26 @@
 
 class SingleLinkedList
 {
+
 public:
   SingleLinkedList();
+  void push_front(int data);
+  int peek_front();
 
 private:
-  typedef struct Node
+  class Node
   {
+  public:
     int data;
-    struct Node *next;
-  } Node;
+    Node *next;
+
+  public:
+    Node(int data, Node *next = nullptr)
+    {
+      this->data = data;
+      this->next = next;
+    }
+  };
   Node *head;
 };
 
