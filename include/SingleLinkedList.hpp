@@ -7,11 +7,13 @@ class SingleLinkedList
 public:
   SingleLinkedList();
   void push_front(int data);
-  int peek_front();
+  int peek_front() const;
   void push_back(int data);
-  int peek_back();
+  int peek_back() const;
   int pop_front();
   int pop_back();
+  bool isEmpty() const;
+  void remove(int data);
 
 private:
   class Node
@@ -28,7 +30,7 @@ private:
     }
   };
   Node *head;
-  Node *getTailNode();
+  Node *getTailNode() const;
 };
 
 #endif

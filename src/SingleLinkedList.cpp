@@ -7,7 +7,7 @@ SingleLinkedList::SingleLinkedList()
 
 void SingleLinkedList::push_front(int data)
 {
-  if (this->head == nullptr)
+  if (isEmpty())
   {
     this->head = new Node(data);
     return;
@@ -15,9 +15,9 @@ void SingleLinkedList::push_front(int data)
   this->head = new Node(data, this->head);
 }
 
-int SingleLinkedList::peek_front()
+int SingleLinkedList::peek_front() const
 {
-  if (this->head == nullptr)
+  if (isEmpty())
   {
     throw "LinkedList is empty";
   }
@@ -26,26 +26,26 @@ int SingleLinkedList::peek_front()
 
 void SingleLinkedList::push_back(int data)
 {
-  if (this->head == nullptr)
+  if (isEmpty())
   {
     return this->push_front(data);
   }
-  Node *temp = this->getTailNode();
+  auto temp = this->getTailNode();
   temp->next = new Node(data);
 }
 
-int SingleLinkedList::peek_back()
+int SingleLinkedList::peek_back() const
 {
-  if (this->head == nullptr)
+  if (isEmpty())
   {
     throw "LinkedList is empty";
   }
   return getTailNode()->data;
 }
 
-SingleLinkedList::Node *SingleLinkedList::getTailNode()
+SingleLinkedList::Node *SingleLinkedList::getTailNode() const
 {
-  Node *temp = this->head;
+  auto temp = this->head;
   while (temp->next != nullptr)
   {
     temp = temp->next;
@@ -55,12 +55,12 @@ SingleLinkedList::Node *SingleLinkedList::getTailNode()
 
 int SingleLinkedList::pop_front()
 {
-  if (this->head == nullptr)
+  if (isEmpty())
   {
     throw "LinkedList is empty";
   }
   int data = this->head->data;
-  const Node *head = this->head;
+  auto head = this->head;
   this->head = this->head->next;
   delete head;
   return data;
@@ -68,7 +68,7 @@ int SingleLinkedList::pop_front()
 
 int SingleLinkedList::pop_back()
 {
-  if (this->head == nullptr)
+  if (isEmpty())
   {
     throw "LinkedList is empty";
   }
@@ -79,7 +79,7 @@ int SingleLinkedList::pop_back()
     this->head = nullptr;
     return data;
   }
-  Node *temp = this->head;
+  auto temp = this->head;
   while (temp->next->next != nullptr)
   {
     temp = temp->next;
@@ -89,4 +89,13 @@ int SingleLinkedList::pop_back()
   delete node;
   temp->next = nullptr;
   return node->data;
+}
+
+bool SingleLinkedList::isEmpty() const
+{
+  return this->head == nullptr;
+}
+
+void SingleLinkedList::remove(int data)
+{
 }
