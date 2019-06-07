@@ -88,7 +88,7 @@ int SingleLinkedList::pop_back()
   const auto data = node->data;
   delete node;
   temp->next = nullptr;
-  return node->data;
+  return data;
 }
 
 bool SingleLinkedList::isEmpty() const
