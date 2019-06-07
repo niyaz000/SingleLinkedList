@@ -96,6 +96,42 @@ bool SingleLinkedList::isEmpty() const
   return this->head == nullptr;
 }
 
-void SingleLinkedList::remove(int data)
+bool SingleLinkedList::remove(int data)
 {
+  if (isEmpty())
+  {
+    return false;
+  }
+  if (head->data == data)
+  {
+    auto node = head;
+    head = head->next;
+    delete node;
+    return true;
+  }
+  auto temp = head;
+  while (temp->next && temp->next->data != data)
+  {
+    temp = temp->next;
+  }
+  if (temp->next == nullptr)
+  {
+    return false;
+  }
+  auto node = temp->next;
+  temp->next = temp->next->next;
+  delete node;
+  return true;
+}
+
+std::vector<int> SingleLinkedList::toList() const
+{
+  std::vector<int> vect;
+  auto node = head;
+  while (node != nullptr)
+  {
+    vect.push_back(node->data);
+    node = node->next;
+  }
+  return vect;
 }
